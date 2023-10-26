@@ -8,20 +8,20 @@
   #error "You must specify default language change method by defining variable LANG_CHANGE_DEFAULT."
 #endif
 
-#ifndef LAYER_BASE_EN
-  #error "You must specify base EN layer number by defining variable LAYER_BASE_EN."
+#ifndef S2L_LAYER_BASE_EN
+  #error "You must specify base EN layer number by defining variable S2L_LAYER_BASE_EN."
 #endif
-#ifndef LAYER_SHIFT_EN
-  #error "You must specify shift EN layer number by defining variable LAYER_SHIFT_EN."
+#ifndef S2L_LAYER_SHIFT_EN
+  #error "You must specify shift EN layer number by defining variable S2L_LAYER_SHIFT_EN."
 #endif
-#ifndef LAYER_BASE_RU
-  #error "You must specify base RU layer number by defining variable LAYER_BASE_RU."
+#ifndef S2L_LAYER_BASE_RU
+  #error "You must specify base RU layer number by defining variable S2L_LAYER_BASE_RU."
 #endif
-#ifndef LAYER_SHIFT_RU
-  #error "You must specify shift RU layer number by defining variable LAYER_SHIFT_RU."
+#ifndef S2L_LAYER_SHIFT_RU
+  #error "You must specify shift RU layer number by defining variable S2L_LAYER_SHIFT_RU."
 #endif
 
-#define LAYER_NO 255
+#define S2L_LAYER_NO 255
 
 #include "keycodes.h"
 

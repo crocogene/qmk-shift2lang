@@ -11,7 +11,7 @@ uint32_t shift_timer = 0;
 uint8_t shift_press_count = 0;
 
 once_shift_state_t once_shift_state = ONCE_SHIFT_OFF; 
-uint8_t once_shift_layer_save = LAYER_NO;
+uint8_t once_shift_layer_save = S2L_LAYER_NO;
 uint32_t once_shift_timer = 0; 
 bool once_shift_timer_enabled = true;
 
@@ -332,8 +332,8 @@ uint16_t s2l_translate_agnostic_keycode(uint16_t keycode) {
 
 uint8_t s2l_get_shift_layer_by_lang(lang_t lang) {
   switch (lang) {
-    case LANG_EN: return LAYER_SHIFT_EN;
-    case LANG_RU: return LAYER_SHIFT_RU;
+    case LANG_EN: return S2L_LAYER_SHIFT_EN;
+    case LANG_RU: return S2L_LAYER_SHIFT_RU;
     default: return LAYER_NO;
   }
 }
@@ -512,11 +512,11 @@ bool s2l_process_sp_keycodes(uint16_t keycode, keyrecord_t* record) {
         if (lang_should_be == LANG_EN) {
           uprintf("LA_CHNG: lang_should_be EN, will change to RU\n");  
           s2l_activate_lang(LANG_RU, true);
-          layer_on(LAYER_BASE_RU);  
+          layer_on(S2L_LAYER_BASE_RU);  
         } else {
           uprintf("LA_CHNG: lang_should_be RU, will change to EN\n");  
           s2l_activate_lang(LANG_EN, true);
-          layer_off(LAYER_BASE_RU); 
+          layer_off(S2L_LAYER_BASE_RU); 
         }
         return false;
       case LA_SYNC: s2l_send_lang_change_to_host();
@@ -547,7 +547,7 @@ bool s2l_process_en_modifiers(uint16_t keycode, keyrecord_t* record) {
         lang_stack[modifiers_count] = lang_should_be; \
         modifiers_count++; \
         if (lang_should_be == LANG_RU) { \
-          layer_off(LAYER_BASE_RU); \
+          layer_off(S2L_LAYER_BASE_RU); \
         } \
         s2l_activate_lang(LANG_EN, SYNC); \
         REGISTER; \
@@ -556,7 +556,7 @@ bool s2l_process_en_modifiers(uint16_t keycode, keyrecord_t* record) {
         modifiers_count--; \
         s2l_activate_lang(lang_stack[modifiers_count], SYNC); \
         if (lang_should_be == LANG_RU) { \
-          layer_on(LAYER_BASE_RU); \
+          layer_on(S2L_LAYER_BASE_RU); \
         } \
       } \
       return false
