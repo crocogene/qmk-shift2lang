@@ -1,4 +1,7 @@
-#include "shift2lang.h"
+#include <stdint.h>
+#include "keycodes.h"
+#include "s2l_keycodes.h"
+#include "s2l.h"
 #include "keyboard.h"
 #include "action_tapping.h"
 #include "quantum.h"
@@ -603,6 +606,7 @@ bool s2l_process(uint16_t keycode, keyrecord_t* record) {
   s2l_process_shift(keycode_lang, record->event.pressed);
   uint16_t qk = s2l_translate_shift_keycode(keycode_lang);
 
+/*
 #define DEBUG_KC(x) \
     (x > AG_CMSP ? "?" : \
     (x >= AG_1 ? "AG" : \
@@ -615,12 +619,12 @@ bool s2l_process(uint16_t keycode, keyrecord_t* record) {
     ( x >= EN_GRV ? x - EN_GRV : \
     ( x >= KS_GRV ? x - KS_GRV : 0 )))))  
 
-/*
-  uprintf("process_ru_shift: kc %d (%s,%d), kс2sft %d (%s,%d), qk %d\n", \
+  uprintf("s2l_process: kc %d (%s,%d), kс2sft %d (%s,%d), qk %d\n", \
     keycode, DEBUG_KC(keycode), \
     keycode_to_shift, DEBUG_KC(keycode_to_shift), \
     qk);
 */
+
   if (qk != KC_NO) {
     if (record->event.pressed) {
       register_code16(qk); 

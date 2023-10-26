@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #ifndef S2L_RANGE
   #error "You must specify S2L_RANGE for the keycodes range."
 #endif
@@ -22,8 +24,6 @@
 #endif
 
 #define S2L_LAYER_NO 255
-
-#include "keycodes.h"
 
 // Способ смены языка
 typedef enum {
