@@ -334,7 +334,7 @@ uint8_t s2l_get_shift_layer_by_lang(lang_t lang) {
   switch (lang) {
     case LANG_EN: return S2L_LAYER_SHIFT_EN;
     case LANG_RU: return S2L_LAYER_SHIFT_RU;
-    default: return LAYER_NO;
+    default: return S2L_LAYER_NO;
   }
 }
 
@@ -435,7 +435,7 @@ void s2l_process_lang(uint16_t keycode, bool down) {
 
 void s2l_lang_user_timer(void) {
 	// Нужно выключать язык после прохождения определённого времени, потому что пользователь ожидает как будто шифт на самом деле включён
-	if (lang_press_count == 0 && lang_current != lang_should_be && timer_elapsed(lang_timer) >= RU_SHIFT_TERM) {
+	if (lang_press_count == 0 && lang_current != lang_should_be && timer_elapsed(lang_timer) >= S2L_SHIFT_TERM) {
     uprintf("lang_user_timer: activate lang\n");
 		s2l_activate_lang_kb(lang_should_be);
 	}
